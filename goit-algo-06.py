@@ -15,30 +15,28 @@ class Phone(Field):
         if not (value.isdigit() and len(value)) == 10:  
           raise ValueError
         super().__init__(value)
-        self.value = value
-        self.phones = []
-        self.phones.append(value)
-
 class Record:
     def __init__(self, name):
         self.name = Name(name)
         self.phones = []
 
-    def add_phone(self, phone):             #ph = Phone(phone)
-          self.phones.append(Phone(phone))  #self.phones.append(ph)
-                                            #return ph
+    def add_phone(self, phone): 
+            ph = Phone(phone)            
+            self.phones.append(ph)
+            return ph
+                                        
     def find_phone(self, phone):
         for ph in self.phones:
             if ph.value == phone:
                 return ph 
         return None
     
-    def remove_phone(self, phone):       #try:
-        if phone in self.phones:            #self.phones.remove(self.find_phone(phone))
-            self.phones.remove(phone)    #except ValueError:
-        else:                               #return None  
-              pass
-           
+     def remove_phone(self, phone):       
+        try:
+             self.phones.remove(self.find_phone(phone))
+        except ValueError:
+            return None  
+
     def edit_phone(self, old_phone:str, new_phone:str):       
         if self.find_phone(old_phone):
             self.remove_phone(old_phone)
