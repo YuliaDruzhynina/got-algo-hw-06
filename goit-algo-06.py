@@ -37,11 +37,13 @@ class Record:
         except ValueError:
             return None  
 
-    def edit_phone(self, old_phone:str, new_phone:str):       
-        if self.find_phone(old_phone):
-            self.remove_phone(old_phone)
-            self.add_phone(new_phone)
-
+    def edit_phone(self, old_phone:str, new_phone:str):  
+	try:    
+            if self.find_phone(old_phone):
+                self.remove_phone(old_phone)
+                self.add_phone(new_phone)
+	except ValueError 
+	    
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
 
