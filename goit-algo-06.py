@@ -42,7 +42,8 @@ class Record:
             if self.find_phone(old_phone):
                 self.remove_phone(old_phone)
                 self.add_phone(new_phone)
-	except ValueError 
+	except ValueError:
+		return "Invalid number"	
 	    
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
