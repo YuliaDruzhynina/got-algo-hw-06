@@ -12,7 +12,7 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, value):
-        if not (value.isdigit()) and (len(value)==10):  
+        if not (value.isdigit() and len(value)==10):  
           raise ValueError
         super().__init__(value)
 class Record:
