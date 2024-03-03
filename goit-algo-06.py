@@ -21,10 +21,12 @@ class Record:
         self.phones = []
 
     def add_phone(self, phone): 
-            ph = Phone(phone)            
-            self.phones.append(ph)
-            return ph
-                                        
+	    try:
+                ph = Phone(phone)            
+                self.phones.append(ph)
+            except ValueError:
+                return ph
+		    
     def find_phone(self, phone):
         for ph in self.phones:
             if ph.value == phone:
