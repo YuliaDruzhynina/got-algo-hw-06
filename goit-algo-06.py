@@ -49,9 +49,14 @@ class Record:
         ph = self.find_phone(old_phone)
         if ph:
             self.remove_phone(old_phone)
-            self.add_phone(new_phone)
+            try:
+                self.add_phone(new_phone)
+            except ValueError:
+                return "Phone number invalid."
         else:
-            return "Phone not found."
+            return "Phone edited."
+        return "Phone not found."
+
 
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
